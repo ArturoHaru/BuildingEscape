@@ -1,0 +1,16 @@
+#########################
+#FILE GENERATI DA UNREAL#
+#########################
+
+*/.vs
+*/Build
+*/Binaries
+*/Intermediate
+*/DerivedDataCache
+*/Saved
+*/content/StarterContent
+
+#######################
+#FILE DI VISUAL STUDIO#
+#######################
+*.VC.db
