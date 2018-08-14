@@ -22,7 +22,8 @@ void UPositionReporter::BeginPlay()
 
 	// Creo una FString per contenere il nome dell'oggetto
 	FString ObjName = GetOwner()->GetName();
-	UE_LOG(LogTemp, Warning, TEXT("Riporto la posizione dell'oggetto %s "), *ObjName);
+	FString ObjPos = GetOwner()->GetActorTransform().GetLocation().ToString();
+	UE_LOG(LogTemp, Warning, TEXT("%s si trova a %s "), *ObjName, *ObjPos);
 	
 	
 }
