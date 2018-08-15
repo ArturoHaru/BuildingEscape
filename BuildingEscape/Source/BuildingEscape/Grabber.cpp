@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Grabber.h"
-
+#define OUT
 
 // Sets default values for this component's properties
 UGrabber::UGrabber()
@@ -31,6 +31,24 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	// ...
+	// Stampoa la direzione in cui guarda il giocatore
+
+
+
+	GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint(
+		OUT	PlayerViewPointLocation,
+		OUT	PlayerViewPointRotation
+	);
+
+
+	if (PlayerViewPointLocation != PreviousLocation || PlayerViewPointRotation != PreviousRotation) {
+		UE_LOG(LogTemp, Warning, TEXT("Location: %s Position: %s"),
+			*PlayerViewPointLocation.ToString(),
+			*PlayerViewPointRotation.ToString()
+		)
+			PreviousLocation = PlayerViewPointLocation;
+		    PreviousRotation = PlayerViewPointRotation;
+	}
+	// Spara un raggio dagli occhi e vedi cosa colpisce
 }
 
