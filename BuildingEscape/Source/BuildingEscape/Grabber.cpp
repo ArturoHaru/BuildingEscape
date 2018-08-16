@@ -53,7 +53,7 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 	FVector LineTraceEnd = PlayerViewPointLocation + PlayerViewPointRotation.Vector()*Reach;
 
 
-	// Spara un raggio dagli occhi e vedi cosa colpisce
+	
 
 	DrawDebugLine(
 		GetWorld(),
@@ -65,5 +65,29 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 		0.f,
 		9.f
 	);
+
+	///Setup parametri query
+	FCollisionQueryParams TraceParameters(FName(TEXT("")), false, GetOwner());
+
+
+	/// Spara un raggio dagli occhi e vedi cosa colpisce (Ray-cast)
+
+	GetWorld()->LineTraceSingleByObjectType(
+		OUT Hit,
+		PlayerViewPointLocation,
+		LineTraceEnd,
+		FCollisionObjectQueryParams(ECollisionChannel::ECC_PhysicsBody),
+		TraceParameters
+	);
+
+	///Guarda cosa colpisci
+	AActor * ActorHit = Hit.GetActor();
+
+	if (ActorHit) {
+
+		UE_LOG(LogTemp, Warning, TEXT("Sto guardando: %s"), *(ActorHit->GetName()))
+
+	}
+
 }
 
