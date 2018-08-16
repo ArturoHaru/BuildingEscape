@@ -8,7 +8,10 @@
 */Intermediate
 */DerivedDataCache
 */Saved
-*/content/StarterContent
+*/content/StarterContent/Textures
+*/content/StarterContent/HDRI
+*/content/StarterContent/Audio
+*/content/StarterContent/Particles
 
 #######################
 #FILE DI VISUAL STUDIO#
