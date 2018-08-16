@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "DrawDebugHelpers.h"
 #include "Grabber.generated.h"
 
 
@@ -26,7 +27,7 @@ public:
 
 	FVector PlayerViewPointLocation, PreviousLocation;
 	FRotator PlayerViewPointRotation, PreviousRotation;
-
+	float Reach = 100.f;
 		
 	
 };

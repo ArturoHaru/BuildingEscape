@@ -31,7 +31,7 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	// Stampoa la direzione in cui guarda il giocatore
+	// Ottieni la direzione in cui guarda il giocatore
 
 
 
@@ -41,14 +41,29 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 	);
 
 
-	if (PlayerViewPointLocation != PreviousLocation || PlayerViewPointRotation != PreviousRotation) {
+	/*if (PlayerViewPointLocation != PreviousLocation || PlayerViewPointRotation != PreviousRotation) {
 		UE_LOG(LogTemp, Warning, TEXT("Location: %s Position: %s"),
 			*PlayerViewPointLocation.ToString(),
 			*PlayerViewPointRotation.ToString()
 		)
 			PreviousLocation = PlayerViewPointLocation;
 		    PreviousRotation = PlayerViewPointRotation;
-	}
+	} */
+
+	FVector LineTraceEnd = PlayerViewPointLocation + PlayerViewPointRotation.Vector()*Reach;
+
+
 	// Spara un raggio dagli occhi e vedi cosa colpisce
+
+	DrawDebugLine(
+		GetWorld(),
+		PlayerViewPointLocation,
+		LineTraceEnd,
+		FColor(255,0,0),
+		false,
+		0.f,
+		0.f,
+		9.f
+	);
 }
 
