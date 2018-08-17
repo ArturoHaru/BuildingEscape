@@ -3,7 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "PhysicsEngine/PhysicsHandleComponent.h"
 #include "Components/ActorComponent.h"
+#include "Components/InputComponent.h"
 #include "GameFramework/Actor.h"
 #include "DrawDebugHelpers.h"
 #include "Grabber.generated.h"
@@ -28,9 +30,18 @@ public:
 
 	FVector PlayerViewPointLocation, PreviousLocation;
 	FRotator PlayerViewPointRotation, PreviousRotation;
-	float Reach = 100.f;
+	
 
 	FHitResult Hit;
 		
 	
+private:
+	///How far player can reach
+	float Reach = 100.f;
+
+	UPhysicsHandleComponent * PhysicsHandle = nullptr;
+	UInputComponent * InputComponent = nullptr;
+	
+	///Ray-Cast & Grabbing
+	void Grab();
 };

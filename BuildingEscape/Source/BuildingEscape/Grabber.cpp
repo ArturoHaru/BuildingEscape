@@ -23,6 +23,28 @@ void UGrabber::BeginPlay()
 	FString ObjPos = GetOwner()->GetActorTransform().GetLocation().ToString();
 	UE_LOG(LogTemp, Warning, TEXT("%s si trova a %s "), *ObjName, *ObjPos);
 	
+
+	///Look for attached input component (only appears at runtime)
+	InputComponent = GetOwner()->FindComponentByClass<UInputComponent>();
+	if(InputComponent){
+
+		UE_LOG(LogTemp, Warning, TEXT("Input Component Found"));
+		//Bind the input axis
+		InputComponent->BindAction("Grab", IE_Pressed, this, &UGrabber::Grab);
+
+	}else {
+
+		UE_LOG(LogTemp, Error, TEXT("%s missing physics handle component"), *(GetOwner()->GetName()));
+
+	}
+	
+}
+
+
+void UGrabber::Grab() {
+
+	UE_LOG(LogTemp, Warning, TEXT("Grab Pressed"));
+
 }
 
 
