@@ -6,6 +6,7 @@
 #include "PhysicsEngine/PhysicsHandleComponent.h"
 #include "Components/ActorComponent.h"
 #include "Components/InputComponent.h"
+#include "PhysicsEngine/PhysicsHandleComponent.h"
 #include "GameFramework/Actor.h"
 #include "DrawDebugHelpers.h"
 #include "Grabber.generated.h"
@@ -41,7 +42,17 @@ private:
 
 	UPhysicsHandleComponent * PhysicsHandle = nullptr;
 	UInputComponent * InputComponent = nullptr;
-	
+	FName InBoneNome;
+
 	///Ray-Cast & Grabbing
 	void Grab();
+	///Call when grab key is released
+	void Release();
+	///Find (assumed) attached Physics handle
+	void FindPhysicsHandleComponent();
+	///Setup (assumed) input component
+	void SetupInputComponent();
+
+	//Return hit for first physic body in reach
+	const FHitResult GetFirsTPhysicsBodyInReach();
 };
