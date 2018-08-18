@@ -6,6 +6,7 @@
 #include "Components/ActorComponent.h"
 #include "Engine/TriggerVolume.h"
 #include "GameFramework/Actor.h"
+#include "Components/PrimitiveComponent.h"
 #include "OpenDoor.generated.h"
 
 
@@ -32,6 +33,7 @@ public:
 
 private:
 
+
 	UPROPERTY(VisibleAnywhere)
 	float OpenAngle = -150.f;
 
@@ -39,11 +41,13 @@ private:
 		ATriggerVolume * PressurePlate;
 
 	UPROPERTY(EditAnywhere)
-		AActor* ActorThatOpens;
-
-	UPROPERTY(EditAnywhere)
 		float DoorCloseDelay = 1.f;
-		
-		float LastDoorOpenTime; //The time a door use for closing
+
 		AActor * Owner; //The owning door
+		float LastDoorOpenTime; //The time a door use for closing
+		
+		//Return the sum of the actors on the plate
+		float GetTotalMassOfActorsOnPlate();
+
+		
 };
