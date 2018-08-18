@@ -46,12 +46,24 @@ private:
 
 	///Ray-Cast & Grabbing
 	void Grab();
+	
 	///Call when grab key is released
 	void Release();
+	
 	///Find (assumed) attached Physics handle
 	void FindPhysicsHandleComponent();
+	
 	///Setup (assumed) input component
 	void SetupInputComponent();
+
+	///Returns current end of reach lines
+	FVector ReachLineEnd();
+
+	///Returns current start of reach lines
+	FVector ReachLineStart();
+
+	///Returns current player rotation
+	FRotator GetPlayerRotation();
 
 	//Return hit for first physic body in reach
 	const FHitResult GetFirsTPhysicsBodyInReach();
