@@ -38,12 +38,12 @@ private:
 	float OpenAngle = -150.f;
 
 	UPROPERTY(EditAnywhere)
-		ATriggerVolume * PressurePlate;
+		ATriggerVolume * PressurePlate = nullptr;
 
 	UPROPERTY(EditAnywhere)
 		float DoorCloseDelay = 1.f;
 
-		AActor * Owner; //The owning door
+		AActor * Owner = nullptr; //The owning door
 		float LastDoorOpenTime; //The time a door use for closing
 		
 		//Return the sum of the actors on the plate
