@@ -39,9 +39,9 @@ void UOpenDoor::OpenDoor()
 void UOpenDoor::CloseDoor()
 {
 	if (!Owner) { return; }
-	//Set rotation
-	Owner->SetActorRotation(FRotator(0.f, -90.f, 00.f));
-
+	
+	//Owner->SetActorRotation(FRotator(0.f, -90.f, 00.f));
+	OnOpenRequest.Broadcast();
 }
 
 
@@ -51,7 +51,7 @@ void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompon
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
 	// Poll the trigger volume
-	if (GetTotalMassOfActorsOnPlate() > 50.f) //TODO make this parameter
+	if (GetTotalMassOfActorsOnPlate() > 30.f) //TODO make this parameter
 	{
 		OpenDoor();
 		LastDoorOpenTime = GetWorld()->GetTimeSeconds();
