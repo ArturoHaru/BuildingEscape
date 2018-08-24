@@ -22,7 +22,7 @@ void UGrabber::BeginPlay()
 ///Look for attached physics handle (only appears at runtime)
 void UGrabber::FindPhysicsHandleComponent() {
 	PhysicsHandle = GetOwner()->FindComponentByClass<UPhysicsHandleComponent>();
-	if (InputComponent == nullptr) {
+	if (PhysicsHandle == nullptr) {
 		UE_LOG(LogTemp, Error, TEXT("%s missing physics handle component"), *(GetOwner()->GetName()));
 	}
 }
